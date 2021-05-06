@@ -15,7 +15,7 @@ class SeriesController
     {
         return response()
             ->json(
-                Serie::create(['name' => $request->name]),
+                Serie::create($request->all()),
                 201
             );
     }
@@ -27,6 +27,19 @@ class SeriesController
             return response()->json('', 204);
         }
         return response()->json($serie, 200);
+    }
+
+    public function update(int $id, Request $request)
+    {
+        $serie = Serie::find($id);
+        if(is_null($serie)) {
+            return response()->json([
+                'erro' => 'Recurso não encontrado'
+            ], 404);
+        }
+        $serie->fill($request->all());
+        $serie->save();
+        return $serie;
     }
 }
 
