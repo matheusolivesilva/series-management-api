@@ -20,7 +20,7 @@ class SeriesController
             );
     }
 
-    public function get(int $id)
+    public function show(int $id)
     {
         $serie = Serie::find($id);
         if(is_null($serie)) {
