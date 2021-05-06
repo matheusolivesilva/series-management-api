@@ -34,12 +34,23 @@ class SeriesController
         $serie = Serie::find($id);
         if(is_null($serie)) {
             return response()->json([
-                'erro' => 'Recurso não encontrado'
+                'error' => 'Resource not found'
             ], 404);
         }
         $serie->fill($request->all());
         $serie->save();
         return $serie;
+    }
+
+    public function destroy(int $id)
+    {
+        $amountOfDeletedSeries = Serie::destroy($id);
+        if($amountOfDeletedSeries === 0) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+        return response()->json('', 204);
     }
 }
 
