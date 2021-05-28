@@ -13,5 +13,9 @@ class Serie extends Model
         return $this->hasMany(Episode::class);
     }
 
+    public function setNameAttribute($name)
+    { 
+        $this->attributes['name'] = strtoupper($name);
+    }
 }
 
