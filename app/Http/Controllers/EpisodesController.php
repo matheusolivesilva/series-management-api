@@ -9,5 +9,13 @@ class EpisodesController extends BaseController
     {
        $this->class = Episode::class;
     }
+
+    public function searchBySerie(int $serieId)
+    {
+        $episodes = Episode::query()
+            ->where('serie_id', $serieId)
+            ->get();
+        return $episodes;
+    }
 }
 
