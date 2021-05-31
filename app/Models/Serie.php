@@ -20,7 +20,7 @@ class Serie extends Model
         $this->attributes['name'] = strtoupper($name);
     }
 
-    public function getLinksAttribute($links): array
+    public function getLinksAttribute(): array
     {
         return [
             'self' => '/api/episodes/' . $this->id,
