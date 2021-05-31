@@ -1,4 +1,4 @@
 #!/bin/bash
 composer install
 sleep 30 
-php artisan migrate
+php artisan migrate --seed
